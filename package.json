@@ -1,0 +1,19 @@
+{
+  "name": "cf-react-template",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "cd frontend && bunx vite",
+    "build": "cd frontend && tsc && bunx vite build",
+    "preview": "cd frontend && bunx vite preview"
+  }
+}
