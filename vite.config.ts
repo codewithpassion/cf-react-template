@@ -1,16 +1,15 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
 import { viteWranglerSpa } from '@torchauth/vite-plugin-wrangler-spa';
 import path from 'path';
-
-console.log(path.resolve(__dirname, '../functions/index.ts'));
+import frontendConfig from './packages/frontend/vite.config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  ...frontendConfig,
+  root: './packages/frontend',
   server: {
     proxy: {
       '/api': {
-        // target: 'https://api.dev.overlaplifeecho.solutions.rockyshoreslabs.io',
         target: "http://localhost:55554",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
@@ -18,15 +17,12 @@ export default defineConfig({
     }
   },
   plugins: [
-    react(),
+    ...(frontendConfig.plugins || []),
     viteWranglerSpa({
-      functionEntrypoint: path.resolve(__dirname, '../functions/index.ts'),
+      functionEntrypoint: path.resolve(__dirname, 'packages/api/index.ts'),
+      wranglerConfig: {
+        port: 55553,
+      }
     }),
   ],
-
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  }
 })

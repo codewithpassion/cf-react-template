@@ -1,5 +1,5 @@
 {
-  "name": "cf-react-template",
+  "name": "demo",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
@@ -10,14 +10,11 @@
     "typescript": "^5.0.0"
   },
   "workspaces": [
-    "frontend"
+    "packages/*"
   ],
+  "dependencies": {},
   "scripts": {
-    "dev": "cd frontend && bun run dev",
-    "build": "cd frontend && bun run build",
-    "preview": "cd frontend && bun run preview"
-  },
-  "dependencies": {
-    "hono": "^4.5.9"
+    "dev": "bunx vite --mode page-function",
+    "build": "vite build &&  vite build --mode page-function"
   }
 }

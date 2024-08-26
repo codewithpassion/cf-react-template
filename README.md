@@ -2,8 +2,8 @@
 
 A template brining you:
 
-- Vite/react `frontend/`
-- Hono API in `functions/`
+- Vite/react `packages/frontend/`
+- API, using hono in `packages/api/`
 
 This allows for a super simple way to deploy a react app to Cloudflare
 including backend functions.

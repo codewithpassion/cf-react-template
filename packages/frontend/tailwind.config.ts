@@ -4,11 +4,12 @@ import typeography from '@tailwindcss/typography'
 import tailwindcssAnimate from "tailwindcss-animate";
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 import theme from './src/lib/theme'
+import path from "path";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './src/**/*.{ts,tsx}',
+    path.join(path.resolve(__dirname), './src/**/*.{ts,tsx}'),
   ],
   prefix: "",
   theme: { extend: theme },

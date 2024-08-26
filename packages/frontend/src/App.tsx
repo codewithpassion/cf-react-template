@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   const onClick = async () => {
-    const res = await fetch("/api");
+    const res = await fetch("/api/chat");
 
     if (res.ok) {
       const json = await res.json();
