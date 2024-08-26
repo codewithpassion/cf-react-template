@@ -3,6 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
+    "@torchauth/vite-plugin-wrangler-spa": "^2.0.0",
     "@types/bun": "latest"
   },
   "peerDependencies": {
@@ -12,9 +13,11 @@
     "frontend"
   ],
   "scripts": {
-    "dev": "cd frontend && bunx vite",
-    "build": "cd frontend && tsc && bunx vite build",
-    "preview": "cd frontend && bunx vite preview"
+    "dev": "cd frontend && bun run dev",
+    "build": "cd frontend && tsc && bun run build",
+    "preview": "cd frontend && bun run preview"
   },
-  "dependencies": {}
+  "dependencies": {
+    "hono": "^4.5.9"
+  }
 }

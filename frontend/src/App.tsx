@@ -2,6 +2,18 @@ import Markdown from "react-markdown";
 import "./App.css";
 
 function App() {
+  const onClick = async () => {
+    const res = await fetch("/api");
+
+    if (res.ok) {
+      const json = await res.json();
+      alert(JSON.stringify(json));
+    } else {
+      alert("Failed to fetch");
+      console.error("Failed to fetch", res);
+    }
+  };
+
   return (
     <>
       <div>
@@ -13,6 +25,15 @@ function App() {
 ## Hello markdown
 Lorem ipsum.`}</Markdown>
         </article>
+      </div>
+
+      <div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={onClick}
+        >
+          Button
+        </button>
       </div>
     </>
   );
