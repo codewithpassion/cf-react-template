@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "dev": "cd frontend && bun run dev",
-    "build": "cd frontend && tsc && bun run build",
+    "build": "cd frontend && bun run build",
     "preview": "cd frontend && bun run preview"
   },
   "dependencies": {

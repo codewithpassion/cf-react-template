@@ -1,15 +1,31 @@
 # cf-react-template
 
-To install dependencies:
+A template brining you:
 
-```bash
-bun install
+- Vite/react `frontend/`
+- Hono API in `functions/`
+
+This allows for a super simple way to deploy a react app to Cloudflare
+including backend functions.
+
+## Build
+
+```
+bun run build
 ```
 
-To run:
+## Development
 
-```bash
-bun run index.ts
+```
+bun dev
 ```
 
-This project was created using `bun init` in bun v1.1.20. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Deploy
+
+Go to `Worker & Pages` in your Cloudflare account > `pages` > `Connecto to GIT`.
+
+### Build configuration:
+
+**Build command:** `bun run build`
+**Build output directory:** `/frontend/dist`
+**Root directory:** `/`
