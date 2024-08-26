@@ -16,7 +16,5 @@
     "build": "cd frontend && tsc && bunx vite build",
     "preview": "cd frontend && bunx vite preview"
   },
-  "dependencies": {
-    "react-markdown": "^9.0.1"
-  }
+  "dependencies": {}
 }
