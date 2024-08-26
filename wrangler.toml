@@ -1,0 +1,8 @@
+name = "demo"
+pages_build_output_dir = "./dist"
+
+[vars]
+ENV = "production"
+API_URL = "https://api.example.com"
+AUTH_URL = "https://auth.example.com"
+AUTH_CLIENT_ID = "1234567890"
