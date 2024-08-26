@@ -1,20 +1,20 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss"
 
 import typeography from '@tailwindcss/typography'
 import tailwindcssAnimate from "tailwindcss-animate";
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
+import theme from './src/lib/theme'
 
-
-export default {
+const config = {
+  darkMode: ["class"],
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{ts,tsx}',
   ],
-  theme: {
-    extend: {},
-  },
+  prefix: "",
+  theme: { extend: theme },
   plugins: [tailwindcssAnimate, typeography, addVariablesForColors],
-}
+} satisfies Config
+
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,3 +29,6 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
+
+
+export default config
