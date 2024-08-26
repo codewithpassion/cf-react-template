@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bunx vite --mode page-function",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build &&  vite build --mode page-function",
     "lint": "eslint .",
     "preview": "vite preview"
   },
