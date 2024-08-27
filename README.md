@@ -22,6 +22,10 @@ bun dev
 
 ## Deploy
 
+```
+bun run build && bunx wrangler pages deploy dist/
+```
+
 Go to `Worker & Pages` in your Cloudflare account > `pages` > `Connecto to GIT`.
 
 ### Build configuration:

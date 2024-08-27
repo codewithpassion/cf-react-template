@@ -1,28 +1,33 @@
-import { defineConfig } from 'vite'
-import { viteWranglerSpa } from '@torchauth/vite-plugin-wrangler-spa';
 import path from 'path';
-import frontendConfig from './packages/frontend/vite.config';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import { viteWranglerSpa } from '@torchauth/vite-plugin-wrangler-spa';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  ...frontendConfig,
-  root: './packages/frontend',
-  server: {
-    proxy: {
-      '/api': {
-        target: "http://localhost:55554",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+export default defineConfig(() => {
+  return {
+    root: './packages/frontend',
+    build: {
+      outDir: path.join(__dirname, '/dist'),
+      emptyOutDir: true,
+    },
+    ssr: {
+      target: 'webworker',
+    },
+    server: {
+      proxy: {
+        '/api': {
+          target: "http://localhost:5554",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
       }
-    }
-  },
-  plugins: [
-    ...(frontendConfig.plugins || []),
-    viteWranglerSpa({
-      functionEntrypoint: path.resolve(__dirname, 'packages/api/index.ts'),
-      wranglerConfig: {
-        port: 55553,
-      }
-    }),
-  ],
-})
+    },
+    plugins: [
+      react(),
+      viteWranglerSpa({
+        functionEntrypoint: 'packages/api/index.ts',
+        allowedApiPaths: ['^/api/*', '^/oauth/*'],
+      }),
+    ],
+  };
+});
